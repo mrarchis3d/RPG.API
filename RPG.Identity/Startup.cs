@@ -1,10 +1,8 @@
 using FluentValidation;
-using MediatR;
-using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using RPG.Identity.Domain.UserAggregate;
 using RPG.Identity.Infrastructure;
-using RPG.Identity.Services;
-using RPG.Identity.Services.Interfaces;
 using System.Reflection;
 
 namespace RPG.Identity
@@ -23,17 +21,12 @@ namespace RPG.Identity
         // This method gets called by the runtime. Use this method to add services to the container.
         public virtual void ConfigureServices(IServiceCollection services)
         {
-
-
+            services.AddControllers();
+            services.AddDbContext<ApplicationDbContext>(opt=>opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
-            services.AddMediatR(typeof(Startup));
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "RPG API", Version = "v1" });
-            });
-            services.AddScoped<IUserService, UserService>();
-            services.AddScoped<BaseContext<User>, ServiceDbContext>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

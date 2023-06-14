@@ -22,8 +22,8 @@ namespace RPG.Identity
                 var services = scope.ServiceProvider;
                 try
                 {
-                    var context = services.GetRequiredService<ServiceDbContext>();
-                    new ServiceSeeding().SeedAsync(context/*, services*/).Wait();
+                    //var context = services.GetRequiredService<ServiceDbContext>();
+                    //new ServiceSeeding().SeedAsync(context/*, services*/).Wait();
                 }
                 catch (Exception ex)
                 {

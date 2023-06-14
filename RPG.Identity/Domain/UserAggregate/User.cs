@@ -1,9 +1,9 @@
-﻿namespace RPG.Identity.Domain.UserAggregate
+﻿using Microsoft.AspNetCore.Identity;
+
+namespace RPG.Identity.Domain.UserAggregate
 {
-    public class User: BaseUserRelational
+    public class ApplicationUser: IdentityUser
     {
-        public required string Email { get; set; }
-        public required byte[] PasswordHash { get; set; }
-        public required byte[] Salt { get; set; }
+        public string Name { get; set; }
     }
 }
