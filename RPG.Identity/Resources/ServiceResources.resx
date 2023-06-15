@@ -117,19 +117,121 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ERROR_SPACE_DOES_NOT_EXIST" xml:space="preserve">
-    <value>Space does not exist.</value>
+  <data name="ERROR_EMAIL_EXIST" xml:space="preserve">
+    <value>This email is already taken.</value>
   </data>
-  <data name="ERROR_USER_IS_ALREADY_IN_THE_CIRCLE" xml:space="preserve">
-    <value>User is already in the Space.</value>
+  <data name="EMAIL_NEW_USER_BODY" xml:space="preserve">
+    <value>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt; &lt;link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet"/&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=" margin: 0; height: 100%; background-color: rgba(41, 41, 44, 1); border-radius: 10px; " &gt; &lt;center&gt; &lt;div style=" box-sizing: border-box; padding: 20px; height: 70px; background: linear-gradient(98.31deg, #7b61ff 49.84%, #3c39ef 100%); border-bottom: 2px solid rgba(255, 255, 255, 0.5); border-top-left-radius: 10px; border-top-right-radius: 10px; " &gt; &lt;div style=" font-family: 'Inter'; font-style: normal; font-weight: lighter; font-size: 28px; color: white; " &gt; Ourglass &lt;/div&gt;&lt;/div&gt;&lt;div style=" width: 68px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #ffffff; padding-top: 40px; padding-bottom: 40px; " &gt; Hello, &lt;/div&gt;&lt;div style=" width: 306px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Thank you for creating your Ourglass account. &lt;/div&gt;&lt;div style=" width: 200px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; This is your &lt;strong&gt;verification code.&lt;/strong&gt; &lt;/div&gt;&lt;div style=" display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 6px; width: 309px; height: 90px; background: #222222; border-radius: 10px; justify-content: center; margin: 0px auto; " &gt; &lt;table style=" border-spacing: 10px; border-collapse: separate; padding-bottom:20px; padding-right: 60px; padding-left: 50px; " &gt; &lt;tr&gt; &lt;td&gt; &lt;div style=" width: 195px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #7b61ff; " &gt; [d1][d2][d3][d4] &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt; &lt;div style=" width: 163px; height: 15px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; text-align: center; color: #918bac; margin: 0px auto; " &gt; This code expires in 3 hours. &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/div&gt;&lt;div style=" padding-top: 20px; padding-bottom: 40px; width: 223px; height: 34px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; " &gt; Please enter the verification code into your mobile app. &lt;/div&gt;&lt;div style=" width: 128px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #494950; padding-bottom: 40px; " &gt; The Ourglass Team &lt;/div&gt;&lt;/center&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
   </data>
-  <data name="ERROR_YOU_ARE_NOT_ADMINISTRATOR" xml:space="preserve">
-    <value>No eres el administrador.</value>
+  <data name="EMAIL_NEW_USER_SUBJECT" xml:space="preserve">
+    <value>Verify your Ourglass account</value>
   </data>
-  <data name="ERROR_YOU_ARE_NOT_AUTHORIZED" xml:space="preserve">
-    <value>No estás autorizado</value>
+  <data name="ERROR_INPUT_REQUIRED" xml:space="preserve">
+    <value>{0} is required.</value>
   </data>
-  <data name="ERROR_TEMPLATE_DOES_NOT_EXIST" xml:space="preserve">
-    <value>Space template does not exist.</value>
+  <data name="ERROR_PASSWORD_NOT_MATCH" xml:space="preserve">
+    <value>Please make sure passwords match.</value>
+  </data>
+  <data name="ERROR_PHONE_EXIST" xml:space="preserve">
+    <value>This phone number is already taken.</value>
+  </data>
+  <data name="ERROR_PHONE_INVALID" xml:space="preserve">
+    <value>Please enter a valid phone number.</value>
+  </data>
+  <data name="SMS_NEW_USER_MESSAGE" xml:space="preserve">
+    <value>Thank you for creating an Ourglass account. This is your verification code: [code]</value>
+  </data>
+  <data name="ERROR_USERNAME_EXIST" xml:space="preserve">
+    <value>This username is already taken.</value>
+  </data>
+  <data name="ERROR_USERNAME_INVALID" xml:space="preserve">
+    <value>Please enter a Username without special characters with a minimun size of 4 and a maximum of 50.</value>
+  </data>
+  <data name="ERROR_USERNAME_IS_CONFIRMED" xml:space="preserve">
+    <value>Username {0} is already confirmed.</value>
+  </data>
+  <data name="ERROR_USERNAME_NOT_EMAIL" xml:space="preserve">
+    <value>Username {0}  does not have email.</value>
+  </data>
+  <data name="ERROR_USERNAME_NOT_EXIST" xml:space="preserve">
+    <value>Username {0} does not exist.</value>
+  </data>
+  <data name="ERROR_USERNAME_NOT_PHONE" xml:space="preserve">
+    <value>Username {0} does not have phone.</value>
+  </data>
+  <data name="ERROR_VERIFICATION_CODE" xml:space="preserve">
+    <value>This code is invalid. Please try again.</value>
+  </data>
+  <data name="ERROR_VERIFICATION_CODE_EXPIRED" xml:space="preserve">
+    <value>The code has expired. Click on the link above to receive a new code</value>
+  </data>
+  <data name="EMAIL_RESET_PASSWORD_SUBJECT" xml:space="preserve">
+    <value>Ourglass - Reset your password </value>
+  </data>
+  <data name="EMAIL_RESET_PASSWORD_BODY" xml:space="preserve">
+    <value>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt; &lt;link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet"/&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=" margin: 0; height: 100%; background-color: rgba(41, 41, 44, 1); border-radius: 10px; " &gt; &lt;center&gt; &lt;div style=" box-sizing: border-box; padding: 20px; height: 70px; background: linear-gradient(98.31deg, #7b61ff 49.84%, #3c39ef 100%); border-bottom: 2px solid rgba(255, 255, 255, 0.5); border-top-left-radius: 10px; border-top-right-radius: 10px; " &gt; &lt;div style=" font-family: 'Inter'; font-style: normal; font-weight: lighter; font-size: 28px; color: white; " &gt; Ourglass &lt;/div&gt;&lt;/div&gt;&lt;div style=" width: 68px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #ffffff; padding-top: 40px; padding-bottom: 40px; " &gt; Hello, &lt;/div&gt;&lt;div style=" width: 406px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; We received a request to reset your password. &lt;/div&gt;&lt;div style=" width: 200px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; This is your &lt;strong&gt;verification code.&lt;/strong&gt; &lt;/div&gt;&lt;div style=" display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 6px; width: 309px; height: 90px; background: #222222; border-radius: 10px; justify-content: center; margin: 0px auto; " &gt; &lt;table style=" border-spacing: 10px; border-collapse: separate; padding-bottom: 20px; padding-right: 60px; padding-left: 50px; " &gt; &lt;tr&gt; &lt;td&gt; &lt;div style=" width: 195px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #7b61ff; " &gt; [d1][d2][d3][d4] &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt; &lt;div style=" width: 163px; height: 15px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; text-align: center; color: #918bac; margin: 0px auto; " &gt; This code expires in 3 hours. &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/div&gt;&lt;div style=" padding-top: 20px; padding-bottom: 40px; width: 223px; height: 34px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; " &gt; Please enter the verification code into your mobile app. &lt;/div&gt;&lt;div style=" width: 128px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #494950; padding-bottom: 40px; " &gt; The Ourglass Team &lt;/div&gt;&lt;/center&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="SMS_RESET_PASSWORD_MESSAGE" xml:space="preserve">
+    <value>Ourglass - This is your password reset code: [code] You can ingnore this message if you do not want to reset your password.</value>
+  </data>
+  <data name="ERROR_USER_NOT_CONFIRMED" xml:space="preserve">
+    <value>User {0} does not have a confirmed email or phone</value>
+  </data>
+  <data name="ERROR_USER_NOT_EXIST" xml:space="preserve">
+    <value>User does not exist.</value>
+  </data>
+  <data name="ERROR_COMFIRM_PASSWORD_EMPTY" xml:space="preserve">
+    <value>Re-enter your new password</value>
+  </data>
+  <data name="ERROR_CURRENT_PASSWORD_EMPTY" xml:space="preserve">
+    <value>Enter the current password</value>
+  </data>
+  <data name="ERROR_NEW_PASSWORD_EMPTY" xml:space="preserve">
+    <value>Enter the new password</value>
+  </data>
+  <data name="ERROR_INVALID_EMAIL" xml:space="preserve">
+    <value>Enter a valid email address</value>
+  </data>
+  <data name="ERROR_INCORRECT_PASSWORD" xml:space="preserve">
+    <value>Enter a valid current password.</value>
+  </data>
+  <data name="ERROR_PASSWORD_LENGTH" xml:space="preserve">
+    <value>Passwords must be at least {0} characters.</value>
+  </data>
+  <data name="ERROR_MAX_LENGTH" xml:space="preserve">
+    <value>Max {0} characters long</value>
+  </data>
+  <data name="ERROR_USERNAME_MIN_LENGTH" xml:space="preserve">
+    <value>Min 4 characters long</value>
+  </data>
+  <data name="ERROR_USERNAME_SPECIAL_CHARACTER" xml:space="preserve">
+    <value>Only numbers and letters allowed</value>
+  </data>
+  <data name="INVALID_LEGAL_AGREEMENT" xml:space="preserve">
+    <value>Invalid legal agreement</value>
+  </data>
+  <data name="EMAIL_WITHOUTUSERNAME_NEW_USER_BODY" xml:space="preserve">
+    <value>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt; &lt;link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet"/&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=" margin: 0; height: 100%; background-color: rgba(41, 41, 44, 1); border-radius: 10px; " &gt; &lt;center&gt; &lt;div style=" box-sizing: border-box; padding: 20px; height: 70px; background: linear-gradient(98.31deg, #7b61ff 49.84%, #3c39ef 100%); border-bottom: 2px solid rgba(255, 255, 255, 0.5); border-top-left-radius: 10px; border-top-right-radius: 10px; " &gt; &lt;div style=" font-family: 'Inter'; font-style: normal; font-weight: lighter; font-size: 28px; color: white; " &gt; Ourglass &lt;/div&gt;&lt;/div&gt;&lt;div style=" width: 68px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #ffffff; padding-top: 40px; padding-bottom: 40px; " &gt; Hello, &lt;/div&gt;&lt;div style=" width: 306px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Thank you for creating your Ourglass account. &lt;/div&gt;&lt;div style=" width: 200px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; This is your &lt;strong&gt;verification code.&lt;/strong&gt; &lt;/div&gt;&lt;div style=" display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 6px; width: 309px; height: 90px; background: #222222; border-radius: 10px; justify-content: center; margin: 0px auto; " &gt; &lt;table style=" border-spacing: 10px; border-collapse: separate; padding-bottom:20px; padding-right: 60px; padding-left: 50px; " &gt; &lt;tr&gt; &lt;td&gt; &lt;div style=" width: 195px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #7b61ff; " &gt; [d1][d2][d3][d4] &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt; &lt;div style=" width: 163px; height: 15px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; text-align: center; color: #918bac; margin: 0px auto; " &gt; This code expires in 3 hours. &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/div&gt;&lt;div style=" padding-top: 20px; padding-bottom: 40px; width: 223px; height: 34px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; " &gt; Please enter the verification code into your mobile app. &lt;/div&gt;&lt;div style=" width: 128px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #494950; padding-bottom: 40px; " &gt; The Ourglass Team &lt;/div&gt;&lt;/center&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="ERROR_INVALID_INVITECODE" xml:space="preserve">
+    <value>Invalid invite code</value>
+  </data>
+  <data name="INVITECODE_REQUIRED" xml:space="preserve">
+    <value>Invitation code required</value>
+  </data>
+  <data name="ERROR_INVITATION_CODE_USAGE_LIMIT" xml:space="preserve">
+    <value>This invitation code has already reached its usage limit.</value>
+  </data>
+  <data name="EMAIL_ADD_OR_CHANGE_ADDRESS_BODY" xml:space="preserve">
+    <value>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt; &lt;link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet"/&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=" margin: 0; height: 100%; background-color: rgba(41, 41, 44, 1); border-radius: 10px; " &gt; &lt;center&gt; &lt;div style=" box-sizing: border-box; padding: 20px; height: 70px; background: linear-gradient(98.31deg, #7b61ff 49.84%, #3c39ef 100%); border-bottom: 2px solid rgba(255, 255, 255, 0.5); border-top-left-radius: 10px; border-top-right-radius: 10px; " &gt; &lt;div style=" font-family: 'Inter'; font-style: normal; font-weight: lighter; font-size: 28px; color: white; " &gt; Ourglass &lt;/div&gt;&lt;/div&gt;&lt;div style=" width: 68px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #ffffff; padding-top: 40px; padding-bottom: 40px; " &gt; Hello, &lt;/div&gt;&lt;div style=" width: 306px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; We received a request to update your email address. &lt;/div&gt;&lt;div style=" width: 200px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; This is your &lt;strong&gt;verification code.&lt;/strong&gt; &lt;/div&gt;&lt;div style=" display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 6px; width: 309px; height: 90px; background: #222222; border-radius: 10px; justify-content: center; margin: 0px auto; " &gt; &lt;table style=" border-spacing: 10px; border-collapse: separate; padding-bottom:20px; padding-right: 60px; padding-left: 50px; " &gt; &lt;tr&gt; &lt;td&gt; &lt;div style=" width: 195px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #7b61ff; " &gt; [d1][d2][d3][d4] &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt; &lt;div style=" width: 163px; height: 15px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; text-align: center; color: #918bac; margin: 0px auto; " &gt; This code expires in 3 hours. &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/div&gt;&lt;div style=" padding-top: 20px; padding-bottom: 40px; width: 223px; height: 34px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; " &gt; Please enter the verification code into your mobile app. &lt;/div&gt;&lt;div style=" width: 128px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #494950; padding-bottom: 40px; " &gt; The Ourglass Team &lt;/div&gt;&lt;/center&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+  </data>
+  <data name="EMAIL_ADD_OR_CHANGE_ADDRESS_SUBJECT" xml:space="preserve">
+    <value>Ourglass - Update your email address</value>
+  </data>
+  <data name="ERROR_PATCH_NOT_SUPPORTED" xml:space="preserve">
+    <value>Patch operation not allowed</value>
+  </data>
+  <data name="ERROR_USER_IS_COMPLETE" xml:space="preserve">
+    <value>User creation is complete, cannot delete</value>
   </data>
 </root>

@@ -22,13 +22,17 @@ namespace RPG.Identity
                 var services = scope.ServiceProvider;
                 try
                 {
-                    //var context = services.GetRequiredService<ServiceDbContext>();
-                    //new ServiceSeeding().SeedAsync(context/*, services*/).Wait();
+                    var config = services.GetRequiredService<IConfiguration>();
+                    var connectionString = config.GetConnectionString("DefaultConnection");
+
+                    SeedData.EnsureSeedData(connectionString);
                 }
                 catch (Exception ex)
                 {
-                    var logger = services.GetRequiredService<ILogger<Program>>();
-                    logger.LogError("An error occurred while seeding the service database");
+                    var logger =
+                        services.GetRequiredService<ILogger<Program>>();
+                    logger
+                        .LogError("An error occurred while seeding the service database");
                     logger.LogError(ex.ToString());
                 }
             }

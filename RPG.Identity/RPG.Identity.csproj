@@ -8,6 +8,7 @@
 
   <ItemGroup>
 	  <PackageReference Include="Duende.IdentityServer.AspNetIdentity" Version="6.3.2" />
+	  <PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.3.2" />
 	  <PackageReference Include="EntityFramework" Version="6.4.4" />
 	  <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
 	  <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.5.2" />
@@ -36,10 +37,12 @@
 
   <ItemGroup>
     <Folder Include="Application\User\Queries\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Infrastructure\EntityConfiguration\" />
-    <Folder Include="Profiles\" />
-    <Folder Include="Services\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RPG.BuildingBlocks\RPG.BuildingBlocks.csproj" />
   </ItemGroup>
 
 </Project>

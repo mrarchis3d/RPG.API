@@ -52,7 +52,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="EventBus\Events\" />
+    <Folder Include="ServiceDiscovery\Dtos\" />
+    <Folder Include="ServiceDiscovery\Extensions\" />
     <Folder Include="SharedServices\" />
+    <Folder Include="UnitTest\" />
   </ItemGroup>
 
 </Project>

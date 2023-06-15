@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,79 +26,79 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace"/>
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
           <xsd:element name="metadata">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0"/>
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" use="required" type="xsd:string"/>
+              <xsd:attribute name="type" type="xsd:string"/>
+              <xsd:attribute name="mimetype" type="xsd:string"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
             <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="alias" type="xsd:string"/>
+              <xsd:attribute name="name" type="xsd:string"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="data">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1"/>
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3"/>
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4"/>
+              <xsd:attribute ref="xml:space"/>
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
             <xsd:complexType>
               <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1"/>
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
+              <xsd:attribute name="name" type="xsd:string" use="required"/>
             </xsd:complexType>
           </xsd:element>
         </xsd:choice>
@@ -117,19 +117,158 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="ERROR_SPACE_DOES_NOT_EXIST" xml:space="preserve">
-    <value>El Espacio no Existe.</value>
+  <data name="ERROR_EMAIL_EXIST" xml:space="preserve">
+    <value>Este correo electrónico ya está en uso.</value>
+    <comment/>
   </data>
-  <data name="ERROR_USER_IS_ALREADY_IN_THE_SPACE" xml:space="preserve">
-    <value>El usuario ya se encuentra en el espacio.</value>
+  <data name="EMAIL_NEW_USER_BODY" xml:space="preserve">
+    <value>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt; &lt;link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet"/&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=" margin: 0; height: 100%; background-color: rgba(41, 41, 44, 1); border-radius: 10px; " &gt; &lt;center&gt; &lt;div style=" box-sizing: border-box; padding: 20px; height: 70px; background: linear-gradient(98.31deg, #7b61ff 49.84%, #3c39ef 100%); border-bottom: 2px solid rgba(255, 255, 255, 0.5); border-top-left-radius: 10px; border-top-right-radius: 10px; " &gt; &lt;div style=" font-family: 'Inter'; font-style: normal; font-weight: lighter; font-size: 28px; color: white; " &gt; Ourglass &lt;/div&gt;&lt;/div&gt;&lt;div style=" width: 68px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #ffffff; padding-top: 40px; padding-bottom: 40px; " &gt; Hola, &lt;/div&gt;&lt;div style=" width: 306px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Gracias por crear su cuenta de Ourglass. &lt;/div&gt;&lt;div style=" width: 200px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Este es su &lt;strong&gt;codigo de verificacion.&lt;/strong&gt; &lt;/div&gt;&lt;div style=" display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 6px; width: 309px; height: 90px; background: #222222; border-radius: 10px; justify-content: center; margin: 0px auto; " &gt; &lt;table style=" border-spacing: 10px; border-collapse: separate; padding-bottom:20px; padding-right: 60px; padding-left: 50px; " &gt; &lt;tr&gt; &lt;td&gt; &lt;div style=" width: 195px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #7b61ff; " &gt; [d1][d2][d3][d4] &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt; &lt;div style=" width: 163px; height: 15px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; text-align: center; color: #918bac; margin: 0px auto; " &gt; Este codigo expirara en 3 horas. &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/div&gt;&lt;div style=" padding-top: 20px; padding-bottom: 40px; width: 223px; height: 34px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; " &gt; Por favor introduzca este codigo en su aplicacion movil. &lt;/div&gt;&lt;div style=" width: 128px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #494950; padding-bottom: 40px; " &gt; El equipo de Ourglass &lt;/div&gt;&lt;/center&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <comment/>
   </data>
-  <data name="ERROR_YOU_ARE_NOT_ADMINISTRATOR" xml:space="preserve">
-    <value>No eres el administrador.</value>
+  <data name="EMAIL_NEW_USER_SUBJECT" xml:space="preserve">
+    <value>Verifica tu cuenta de Ourglass</value>
+    <comment/>
   </data>
-  <data name="ERROR_YOU_ARE_NOT_AUTHORIZED" xml:space="preserve">
-    <value>No estás autorizado</value>
+  <data name="ERROR_INPUT_REQUIRED" xml:space="preserve">
+    <value>{0} es requerido.</value>
+    <comment/>
   </data>
-  <data name="ERROR_TEMPLATE_DOES_NOT_EXIST" xml:space="preserve">
-    <value>El Template del espacio no existe.</value>
+  <data name="ERROR_PASSWORD_NOT_MATCH" xml:space="preserve">
+    <value>Asegúrese de que las contraseñas coincidan.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_PHONE_EXIST" xml:space="preserve">
+    <value>El telefono ya existe.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_PHONE_INVALID" xml:space="preserve">
+    <value>Por favor ingrese un número de teléfono válido.</value>
+    <comment/>
+  </data>
+  <data name="SMS_NEW_USER_MESSAGE" xml:space="preserve">
+    <value>Gracias por crearse una cuenta en Ourglass. Este es su código de verificación [code].</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USERNAME_EXIST" xml:space="preserve">
+    <value>El usuario ya existe.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USERNAME_INVALID" xml:space="preserve">
+    <value>Por favor Ingrese un nombre de usuario sin caracteres especiales con tamaño minimo 4 y maximo 50.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USERNAME_IS_CONFIRMED" xml:space="preserve">
+    <value>El nombre de usuario {0} ya está confirmado.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USERNAME_NOT_EMAIL" xml:space="preserve">
+    <value>Usuario {0} no tiene correo electrónico</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USERNAME_NOT_EXIST" xml:space="preserve">
+    <value>El nombre de usuario {0} no existe.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USERNAME_NOT_PHONE" xml:space="preserve">
+    <value>Usuario {0} no tiene telefono.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_VERIFICATION_CODE" xml:space="preserve">
+    <value>Este código de verificación es incorrecto.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_VERIFICATION_CODE_EXPIRED" xml:space="preserve">
+    <value>Este código de verificación ya caducó.</value>
+    <comment/>
+  </data>
+  <data name="EMAIL_RESET_PASSWORD_SUBJECT" xml:space="preserve">
+    <value>Ourglass - Restaurar contraseña</value>
+    <comment/>
+  </data>
+  <data name="EMAIL_RESET_PASSWORD_BODY" xml:space="preserve">
+    <value>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt; &lt;link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet"/&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=" margin: 0; height: 100%; background-color: rgba(41, 41, 44, 1); border-radius: 10px; " &gt; &lt;center&gt; &lt;div style=" box-sizing: border-box; padding: 20px; height: 70px; background: linear-gradient(98.31deg, #7b61ff 49.84%, #3c39ef 100%); border-bottom: 2px solid rgba(255, 255, 255, 0.5); border-top-left-radius: 10px; border-top-right-radius: 10px; " &gt; &lt;div style=" font-family: 'Inter'; font-style: normal; font-weight: lighter; font-size: 28px; color: white; " &gt; Ourglass &lt;/div&gt;&lt;/div&gt;&lt;div style=" width: 68px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #ffffff; padding-top: 40px; padding-bottom: 40px; " &gt; Hola, &lt;/div&gt;&lt;div style=" width: 406px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Recibimos una solicitud para reiniciar su contraseña. &lt;/div&gt;&lt;div style=" width: 200px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Este es su &lt;strong&gt;codigo de verificacion.&lt;/strong&gt; &lt;/div&gt;&lt;div style=" display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 6px; width: 309px; height: 90px; background: #222222; border-radius: 10px; justify-content: center; margin: 0px auto; " &gt; &lt;table style=" border-spacing: 10px; border-collapse: separate; padding-bottom: 20px; padding-right: 60px; padding-left: 50px; " &gt; &lt;tr&gt; &lt;td&gt; &lt;div style=" width: 195px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #7b61ff; " &gt; [d1][d2][d3][d4] &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt; &lt;div style=" width: 163px; height: 15px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; text-align: center; color: #918bac; margin: 0px auto; " &gt; Este codigo expirara en 3 horas. &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/div&gt;&lt;div style=" padding-top: 20px; padding-bottom: 40px; width: 223px; height: 34px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; " &gt; Por favor introduzca este codigo en su aplicacion movil. &lt;/div&gt;&lt;div style=" width: 128px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #494950; padding-bottom: 40px; " &gt; El equipo de Ourglass &lt;/div&gt;&lt;/center&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <comment/>
+  </data>
+  <data name="SMS_RESET_PASSWORD_MESSAGE" xml:space="preserve">
+    <value>Ourglass - Este es su codigo para restablecer su contraseña [code] Usted puede desestimar el mensaje si no desea resetearla.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USER_NOT_CONFIRMED" xml:space="preserve">
+    <value>El usuario {0} no cuenta con la verificacion del telefono o email hecha</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USER_NOT_EXIST" xml:space="preserve">
+    <value>El usuario no existe.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_COMFIRM_PASSWORD_EMPTY" xml:space="preserve">
+    <value>Vuelva a ingresar su nueva contraseña</value>
+    <comment/>
+  </data>
+  <data name="ERROR_CURRENT_PASSWORD_EMPTY" xml:space="preserve">
+    <value>Ingresa la contraseña actual</value>
+    <comment/>
+  </data>
+  <data name="ERROR_NEW_PASSWORD_EMPTY" xml:space="preserve">
+    <value>Ingresa la nueva contraseña</value>
+    <comment/>
+  </data>
+  <data name="ERROR_INVALID_EMAIL" xml:space="preserve">
+    <value>Ingrese un correo electrónico válido</value>
+    <comment/>
+  </data>
+  <data name="ERROR_INCORRECT_PASSWORD" xml:space="preserve">
+    <value>Ingrese una contraseña actual válida.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_PASSWORD_LENGTH" xml:space="preserve">
+    <value>La contraseña debe tener al menos {0} caracteres.</value>
+    <comment/>
+  </data>
+  <data name="ERROR_MAX_LENGTH" xml:space="preserve">
+    <value>Máximo {0} caracteres de longitud</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USERNAME_MIN_LENGTH" xml:space="preserve">
+    <value>Mínimo 4 caracteres de longitud</value>
+    <comment/>
+  </data>
+  <data name="ERROR_USERNAME_SPECIAL_CHARACTER" xml:space="preserve">
+    <value>Solo se permiten números y letras</value>
+    <comment/>
+  </data>
+  <data name="INVALID_LEGAL_AGREEMENT" xml:space="preserve">
+    <value>Error de validez del acuerdo legal</value>
+    <comment/>
+  </data>
+  <data name="EMAIL_WITHOUTUSERNAME_NEW_USER_BODY" xml:space="preserve">
+    <value>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt; &lt;link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet"/&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=" margin: 0; height: 100%; background-color: rgba(41, 41, 44, 1); border-radius: 10px; " &gt; &lt;center&gt; &lt;div style=" box-sizing: border-box; padding: 20px; height: 70px; background: linear-gradient(98.31deg, #7b61ff 49.84%, #3c39ef 100%); border-bottom: 2px solid rgba(255, 255, 255, 0.5); border-top-left-radius: 10px; border-top-right-radius: 10px; " &gt; &lt;div style=" font-family: 'Inter'; font-style: normal; font-weight: lighter; font-size: 28px; color: white; " &gt; Ourglass &lt;/div&gt;&lt;/div&gt;&lt;div style=" width: 68px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #ffffff; padding-top: 40px; padding-bottom: 40px; " &gt; Hola, &lt;/div&gt;&lt;div style=" width: 306px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Gracias por crear su cuenta de Ourglass. &lt;/div&gt;&lt;div style=" width: 200px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Este es su &lt;strong&gt;codigo de verificacion.&lt;/strong&gt; &lt;/div&gt;&lt;div style=" display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 6px; width: 309px; height: 90px; background: #222222; border-radius: 10px; justify-content: center; margin: 0px auto; " &gt; &lt;table style=" border-spacing: 10px; border-collapse: separate; padding-bottom:20px; padding-right: 60px; padding-left: 50px; " &gt; &lt;tr&gt; &lt;td&gt; &lt;div style=" width: 195px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #7b61ff; " &gt; [d1][d2][d3][d4] &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt; &lt;div style=" width: 163px; height: 15px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; text-align: center; color: #918bac; margin: 0px auto; " &gt; Este codigo expirara en 3 horas. &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/div&gt;&lt;div style=" padding-top: 20px; padding-bottom: 40px; width: 223px; height: 34px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; " &gt; Por favor introduzca este codigo en su aplicacion movil. &lt;/div&gt;&lt;div style=" width: 128px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #494950; padding-bottom: 40px; " &gt; El equipo de Ourglass &lt;/div&gt;&lt;/center&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <comment/>
+  </data>
+  <data name="ERROR_INVALID_INVITECODE" xml:space="preserve">
+    <value>Código de invitación no válido</value>
+    <comment/>
+  </data>
+  <data name="INVITECODE_REQUIRED" xml:space="preserve">
+    <value>Código de invitación requerido</value>
+    <comment/>
+  </data>
+  <data name="ERROR_INVITATION_CODE_USAGE_LIMIT" xml:space="preserve">
+    <value>Este código de invitación ya ha llegado a su límite de uso</value>
+    <comment/>
+  </data>
+  <data name="EMAIL_ADD_OR_CHANGE_ADDRESS_BODY" xml:space="preserve">
+    <value>&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt; &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"/&gt; &lt;link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet"/&gt; &lt;head&gt; &lt;/head&gt; &lt;body&gt; &lt;div style=" margin: 0; height: 100%; background-color: rgba(41, 41, 44, 1); border-radius: 10px; " &gt; &lt;center&gt; &lt;div style=" box-sizing: border-box; padding: 20px; height: 70px; background: linear-gradient(98.31deg, #7b61ff 49.84%, #3c39ef 100%); border-bottom: 2px solid rgba(255, 255, 255, 0.5); border-top-left-radius: 10px; border-top-right-radius: 10px; " &gt; &lt;div style=" font-family: 'Inter'; font-style: normal; font-weight: lighter; font-size: 28px; color: white; " &gt; Ourglass &lt;/div&gt;&lt;/div&gt;&lt;div style=" width: 68px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #ffffff; padding-top: 40px; padding-bottom: 40px; " &gt; Hola, &lt;/div&gt;&lt;div style=" width: 306px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Recibimos una solicitud para actualizar su direccion de. &lt;/div&gt;&lt;div style=" width: 200px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; padding-bottom: 20px; " &gt; Este es su &lt;strong&gt;codigo de verificacion.&lt;/strong&gt; &lt;/div&gt;&lt;div style=" display: flex; flex-direction: column; align-items: center; padding: 20px; gap: 6px; width: 309px; height: 90px; background: #222222; border-radius: 10px; justify-content: center; margin: 0px auto; " &gt; &lt;table style=" border-spacing: 10px; border-collapse: separate; padding-bottom:20px; padding-right: 60px; padding-left: 50px; " &gt; &lt;tr&gt; &lt;td&gt; &lt;div style=" width: 195px; height: 29px; font-family: 'Inter'; font-style: normal; font-weight: 700; font-size: 24px; line-height: 29px; text-align: center; color: #7b61ff; " &gt; [d1][d2][d3][d4] &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt; &lt;td&gt; &lt;div style=" width: 163px; height: 15px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 12px; line-height: 15px; text-align: center; color: #918bac; margin: 0px auto; " &gt; Este codigo expirara en 3 horas. &lt;/div&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt; &lt;/div&gt;&lt;div style=" padding-top: 20px; padding-bottom: 40px; width: 223px; height: 34px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #ffffff; " &gt; Por favor introduzca este codigo en su aplicacion movil. &lt;/div&gt;&lt;div style=" width: 128px; height: 17px; font-family: 'Inter'; font-style: normal; font-weight: 400; font-size: 14px; line-height: 17px; text-align: center; color: #494950; padding-bottom: 40px; " &gt; El equipo de Ourglass &lt;/div&gt;&lt;/center&gt; &lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</value>
+    <comment/>
+  </data>
+  <data name="EMAIL_ADD_OR_CHANGE_ADDRESS_SUBJECT" xml:space="preserve">
+    <value>Ourglass - Actualiza tu direccion de email</value>
+    <comment/>
+  </data>
+  <data name="ERROR_PATCH_NOT_SUPPORTED" xml:space="preserve">
+    <value>Operacion de patch no permitida</value>
+  </data>
+  <data name="ERROR_USER_IS_COMPLETE" xml:space="preserve">
+    <value>La creacion del usuario se completo, el borrado esta prohibido</value>
   </data>
 </root>
