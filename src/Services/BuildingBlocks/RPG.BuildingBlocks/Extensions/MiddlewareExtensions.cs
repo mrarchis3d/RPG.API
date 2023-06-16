@@ -5,7 +5,7 @@ namespace RPG.BuildingBlocks.Common.Extensions
 {
     public static class MiddlewareExtensions
     {
-        public static IApplicationBuilder UseHttpLogging(this IApplicationBuilder builder) 
+        public static IApplicationBuilder UseHttpLoggingExtension(this IApplicationBuilder builder) 
             => builder.UseMiddleware<HttpLoggingMiddleware>();
     }
 }

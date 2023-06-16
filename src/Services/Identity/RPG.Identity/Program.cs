@@ -1,5 +1,5 @@
-using Microsoft.AspNetCore;
-using RPG.Identity.Infrastructure;
+using BuildingBlocks.Common;
+using Serilog;
 
 namespace RPG.Identity
 {
@@ -7,15 +7,19 @@ namespace RPG.Identity
     {
         public static void Main(string[] args)
         {
-            var host = CreateWebHostBuilder(args).Build();
-            SeedDatabase(host);
+            var configuration = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .AddEnvironmentVariables()
+                .Build();
+
+            //Log.Logger = CommonHostBuilder.DefaultLogger(configuration);
+
+            var host = CommonHostBuilder.DefaultBuilder(args, typeof(Startup)).Build();
+            //SeedDatabase(host);
             host.Run();
         }
 
-        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>();
-        private static void SeedDatabase(IWebHost host)
+        private static void SeedDatabase(IHost host)
         {
             using (var scope = host.Services.CreateScope())
             {

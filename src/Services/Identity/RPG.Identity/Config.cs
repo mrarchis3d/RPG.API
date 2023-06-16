@@ -49,7 +49,7 @@ namespace RPG.Identity
               ClientId = ClientIds.UnrealMobile,
               ClientSecrets = {new Secret("SuperSecretPassword".Sha256())},
               AllowedGrantTypes = { "authorization_code", "password"},
-              RequirePkce = true,
+              RequirePkce = false,
               RequireClientSecret = false,
 
               RedirectUris = {"http://localhost:4000/"},

@@ -1,26 +1,29 @@
-﻿using IdentityModel;
+﻿using HealthChecks.UI.Client;
+using IdentityModel;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver.Core.Configuration;
-using Newtonsoft.Json;
-using RPG.BuildingBlocks.Common.Constants;
-using RPG.BuildingBlocks.Common.Extensions;
-using RPG.BuildingBlocks.Common.Providers.Identity;
-using RPG.RPG.BuildingBlocks.Common.AuthorizationAttributes;
-using Serilog;
-using System.Net.Http.Headers;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Localization;
-using RPG.BuildingBlocks.Common.Middlewares;
-using System.Globalization;
-using RPG.BuildingBlocks.Common.Utils;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
-using Google.Api;
+using Newtonsoft.Json;
+using RPG.BuildingBlocks.Common.CommonLog;
+using RPG.BuildingBlocks.Common.Constants;
+using RPG.BuildingBlocks.Common.EventBus;
+using RPG.BuildingBlocks.Common.Extensions;
+using RPG.BuildingBlocks.Common.Middlewares;
+using RPG.BuildingBlocks.Common.Providers.Identity;
+using RPG.BuildingBlocks.Common.ServiceDiscovery;
+using RPG.BuildingBlocks.Common.StateManagement;
+using RPG.BuildingBlocks.Common.Utils;
+using RPG.RPG.BuildingBlocks.Common.AuthorizationAttributes;
+using System.Globalization;
+using System.Net.Http.Headers;
 
 namespace RPG.BuildingBlocks.Common
 {
@@ -30,18 +33,50 @@ namespace RPG.BuildingBlocks.Common
         public static IServiceCollection AddCommonServices(this IServiceCollection services, IConfiguration configuration)
         {
 
+            IdentityModelEventSource.ShowPII = true;
+
+            services.AddLocalization(options => options.ResourcesPath = "Resources");
+
             string serviceId = configuration["ServiceId"];
             string authorityUrl = configuration["AUTHORITY_URL"];
             bool requireHttpsMetadata = bool.Parse(configuration["AUTHORITY_REQUIRE_HTTPS_METADATA"]);
+
+            //var connectionString = configuration.GetConnectionString("DefaultConnection");
+            //string serviceId = "identity";
+            //string authorityUrl = "http://localhost:7001";
+            //bool requireHttpsMetadata = false;
 
             Console.WriteLine($"Service Id {serviceId}");
             Console.WriteLine($"authority URL {authorityUrl}");
             Console.WriteLine($"requireHttpsMetadata {requireHttpsMetadata}");
 
-            services.AddHttpContextAccessor();
-            services.AddLocalization(options => options.ResourcesPath = "Resources");
-            services.AddScoped<CommonValidator>();
-            services.AddScoped<CustomRequestInfo>();
+            //http://docs.identityserver.io/en/release/topics/apis.html
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.Authority = authorityUrl;
+                options.Audience = serviceId;
+                options.RequireHttpsMetadata = requireHttpsMetadata;
+
+                options.Events = new JwtBearerEvents
+                {
+                    OnMessageReceived = context =>
+                    {
+                        Console.WriteLine("token = " + context.Request.Query["access_token"]);
+                        var accessToken = context.Request.Query["access_token"];
+
+                        // If the request is for our hub...
+                        var path = context.HttpContext.Request.Path;
+                        if (!string.IsNullOrEmpty(accessToken) && path.HasValue && path.Value.Contains("/messaging"))
+                        {
+                            // Read the token out of the query string
+                            context.Token = accessToken;
+                        }
+
+                        return Task.CompletedTask;
+                    }
+                };
+            });
 
             services.AddSwaggerGen(c =>
             {
@@ -87,11 +122,38 @@ namespace RPG.BuildingBlocks.Common
                     options.SubstituteApiVersionInUrl = true;
                 });
 
+            //services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+            //if (additionalAssemblies is not null)
+            //{
+            //    foreach (var assembly in additionalAssemblies)
+            //    {
+            //        services.AddMediatR(assembly);
+            //    }
+            //}
+
+            //services.AddValidatorsFromAssemblyContaining<TMediatrCommandHandler>();
             services.AddControllers().AddNewtonsoftJson(x =>
             {
                 x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 x.SerializerSettings.Formatting = Formatting.Indented;
-            });
+            }).AddDapr();
+
+            //services.AddSingleton(settings =>
+            //{
+            //    CommonGlobalAppSingleSettings commonGlobalAppSingleSettings = new CommonGlobalAppSingleSettings();
+            //    commonGlobalAppSingleSettings.DbConnectionString = dbConnectionString;
+            //    return commonGlobalAppSingleSettings;
+            //});
+
+            services.AddScoped<CentralizedLogger>();
+
+            services.AddScoped<CommonValidator>();
+            services.AddScoped<CustomRequestInfo>();
+            services.AddSingleton<IAuthorizationHandler, ValidApiTokenHandler>();
+            services.AddHttpContextAccessor();
+            //services.AddAutoMapper(typeof(TMediatrCommandHandler).Assembly);
+
             services.AddHttpClient<IIdentityProvider, IdentityProvider>((serv, opt) =>
             {
                 var accessor = serv.GetRequiredService<IHttpContextAccessor>();
@@ -105,31 +167,6 @@ namespace RPG.BuildingBlocks.Common
 
                 opt.DefaultRequestHeaders.Authorization =
                     new AuthenticationHeaderValue("Bearer", accessor.HttpContext.GetBearerToken().Result);
-            });
-            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.Authority = authorityUrl;
-                options.Audience = serviceId;
-                options.RequireHttpsMetadata = requireHttpsMetadata;
-
-                options.Events = new JwtBearerEvents
-                {
-                    OnMessageReceived = context =>
-                    {
-                        var accessToken = context.Request.Query["access_token"];
-
-                        // If the request is for our hub...
-                        var path = context.HttpContext.Request.Path;
-                        if (!string.IsNullOrEmpty(accessToken) && path.HasValue && path.Value.Contains("/messaging"))
-                        {
-                            // Read the token out of the query string
-                            context.Token = accessToken;
-                        }
-
-                        return Task.CompletedTask;
-                    }
-                };
             });
 
             services.AddAuthorization(options =>
@@ -160,6 +197,11 @@ namespace RPG.BuildingBlocks.Common
 
                 options.DefaultPolicy = options.GetPolicy("Default")!;
             });
+
+
+                services.AddScoped<IEventBus, EventBusDapr>();
+                services.AddScoped<IServiceDiscovery, ServiceDiscoveryDapr>();
+                services.AddScoped<IStateManagement, StateManagementDapr>();
             return services;
         }
 
@@ -170,7 +212,7 @@ namespace RPG.BuildingBlocks.Common
             bool useLogging = false
         )
         {
-            //string serviceId = configuration["ServiceId"];
+            string serviceId = configuration["ServiceId"];
             if (configuration.GetValue<bool>("use_swagger", false))
             {
                 app.UseSwagger(options =>
@@ -179,7 +221,7 @@ namespace RPG.BuildingBlocks.Common
                     {
                         if (httpReq.Headers.ContainsKey("X-Forwarded-Host"))
                         {
-                            var basePath = "character";
+                            var basePath = serviceId;
                             var serverUrl = $"{httpReq.Headers["X-Forwarded-Proto"]}://{httpReq.Headers["X-Forwarded-Host"]}/{basePath}";
                             swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
                         }
@@ -191,7 +233,7 @@ namespace RPG.BuildingBlocks.Common
                     {
                         c.SwaggerEndpoint($"v{version}/swagger.json", $"Service {version}.0");
                     }
-                    c.OAuthClientId(ClientIds.Flutter);
+                    c.OAuthClientId(ClientIds.UnrealMobile);
                     c.OAuthAppName("API - Swagger");
                     c.OAuthUsePkce();
                 });
@@ -216,6 +258,9 @@ namespace RPG.BuildingBlocks.Common
 
             app.UseRouting();
 
+            if (useLogging)
+                app.UseHttpLogging();
+
             app.UseCloudEvents();
 
             app.UseAuthentication();
@@ -226,6 +271,16 @@ namespace RPG.BuildingBlocks.Common
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+                //{
+                //    Predicate = _ => true,
+                //    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                //});
+
+                //endpoints.MapHealthChecks("/liveness", new HealthCheckOptions
+                //{
+                //    Predicate = r => r.Name.Contains("self")
+                //});
 
                 endpoints.MapSubscribeHandler();
                 endpoints.MapDefaultControllerRoute();

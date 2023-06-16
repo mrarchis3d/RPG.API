@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RPG.Character.Controllers
 {
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
     [Authorize]
-    [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]

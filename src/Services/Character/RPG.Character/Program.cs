@@ -1,27 +1,41 @@
-using RPG.BuildingBlocks.Common;
+using BuildingBlocks.Common;
+using Serilog;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddCommonServices(builder.Configuration);
-
-
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+namespace RPG.Character
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            var configuration = new ConfigurationBuilder()
+                .AddCommandLine(args)
+                .AddEnvironmentVariables()
+                .Build();
+
+            //Log.Logger = CommonHostBuilder.DefaultLogger(configuration);
+
+            var host = CommonHostBuilder.DefaultBuilder(args, typeof(Startup)).Build();
+            //SeedDatabase(host);
+            host.Run();
+        }
+
+        private static void SeedDatabase(IHost host)
+        {
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
+                try
+                {
+                    //var context = services.GetRequiredService<ServiceDbContext>();
+                    //new ServiceSeeding().SeedAsync(context/*, services*/).Wait();
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError("An error occurred while seeding the service database");
+                    logger.LogError(ex.ToString());
+                }
+            }
+        }
+    }
 }
-app.UseAppCommonServices(builder.Configuration);
-
-app.MapControllers();
-
-app.Run();

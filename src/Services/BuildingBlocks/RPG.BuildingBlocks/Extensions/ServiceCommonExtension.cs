@@ -149,37 +149,37 @@ namespace RPG.BuildingBlocks.Common.Extensions
                     });
                 }
                 
-                //c.OperationFilter<SwaggerDeprecationFilter>();
-                //c.OperationFilter<AuthorizeCheckOperationFilter>();
-                //c.DocumentFilter<RemoveInternalEndpoints>();
-                //c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
-                //{
-                //    Type = SecuritySchemeType.OAuth2,
-                //    Flows = new OpenApiOAuthFlows
-                //    {
-                //        Password = new OpenApiOAuthFlow
-                //        {
-                //            AuthorizationUrl = new Uri(authorityUrl + "/connect/authorize"),
-                //            TokenUrl = new Uri(authorityUrl + "/connect/token"),
-                //            Scopes = Scopes.ApiScopes
-                //        }
-                //    }
-                //});        
+                c.OperationFilter<SwaggerDeprecationFilter>();
+                c.OperationFilter<AuthorizeCheckOperationFilter>();
+                c.DocumentFilter<RemoveInternalEndpoints>();
+                c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
+                {
+                   Type = SecuritySchemeType.OAuth2,
+                   Flows = new OpenApiOAuthFlows
+                   {
+                       Password = new OpenApiOAuthFlow
+                       {
+                           AuthorizationUrl = new Uri(authorityUrl + "/connect/authorize"),
+                           TokenUrl = new Uri(authorityUrl + "/connect/token"),
+                           Scopes = Scopes.ApiScopes
+                       }
+                   }
+                });        
             });
             
-            //services.AddApiVersioning(o =>
-            //{
-            //    o.AssumeDefaultVersionWhenUnspecified = true;
-            //    o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
-            //    o.ReportApiVersions = true;
-            //});
+            services.AddApiVersioning(o =>
+            {
+               o.AssumeDefaultVersionWhenUnspecified = true;
+               o.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+               o.ReportApiVersions = true;
+            });
             
-            //services.AddVersionedApiExplorer(
-            //    options =>
-            //    {
-            //        options.GroupNameFormat = "'v'VVV";
-            //        options.SubstituteApiVersionInUrl = true;
-            //    });
+            services.AddVersionedApiExplorer(
+               options =>
+               {
+                   options.GroupNameFormat = "'v'VVV";
+                   options.SubstituteApiVersionInUrl = true;
+               });
 
             services.AddMediatR(typeof(TMediatrCommandHandler).Assembly, typeof(CommonResources).Assembly);
 

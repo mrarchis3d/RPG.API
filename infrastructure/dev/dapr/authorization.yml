@@ -1,0 +1,20 @@
+apiVersion: dapr.io/v1alpha1
+kind: Component
+metadata:
+  name: authorization
+spec:
+  type: middleware.http.oauth2clientcredentials
+  version: v1
+  metadata:
+  - name: clientId
+    value: "internal"
+  - name: clientSecret
+    value: "AnotherSuperSecretPassword"
+  - name: scopes
+    value: "pubsub.full"
+  - name: tokenURL
+    value: "http://localhost:7001/connect/token"
+  - name: headerName
+    value: "Authorization"
+  - name: authStyle
+    value: "1"
