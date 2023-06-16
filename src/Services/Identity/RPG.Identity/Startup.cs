@@ -189,16 +189,31 @@ namespace RPG.Identity
 
             if (env.IsDevelopment())
             {
-
-                // Habilita la generaci�n del documento JSON de Swagger
-                app.UseSwagger();
-
-                // Especifica la ruta para acceder al documento JSON de Swagger
-                app.UseSwaggerUI(c =>
+                string serviceId = Configuration["ServiceId"]!;
+                if (Configuration.GetValue<bool>("use_swagger", false))
                 {
-                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "RPG.API");
-                });
-                app.UseDeveloperExceptionPage();
+                    app.UseSwagger(options =>
+                    {
+                        options.PreSerializeFilters.Add((swagger, httpReq) =>
+                        {
+                            if (httpReq.Headers.ContainsKey("X-Forwarded-Host"))
+                            {
+                                var basePath = serviceId;
+                                var serverUrl = $"{httpReq.Headers["X-Forwarded-Proto"]}://{httpReq.Headers["X-Forwarded-Host"]}";
+                                swagger.Servers = new List<OpenApiServer> { new OpenApiServer { Url = serverUrl } };
+                            }
+                        });
+                    });
+
+                    app.UseSwaggerUI(c =>
+                    {
+                        c.SwaggerEndpoint("v1/swagger.json", "Service");
+                        c.SwaggerEndpoint("v2/swagger.json", "Service 2.0");
+                        c.OAuthClientId(ClientIds.UnrealMobile);
+                        c.OAuthAppName("API - Swagger");
+                        c.OAuthUsePkce();
+                    });
+                }
 
             }
             if (env.IsDevelopment())

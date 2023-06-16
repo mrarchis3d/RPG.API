@@ -18,3 +18,6 @@ obj/
 # NuGet packages
 *.nuget.props
 *.nuget.targets
+
+.logs/**
+.tye/**
