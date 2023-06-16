@@ -1,39 +1,31 @@
-﻿using RPG.BuildingBlocks.Common.SeedWork;
-using RPG.BuildingBlocks.Common.Utils;
+﻿using FluentValidation;
+using IdentityModel;
+using IdentityServer4.AccessTokenValidation;
 using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using Newtonsoft.Json;
+using RPG.BuildingBlocks.Common.CommonLog;
+using RPG.BuildingBlocks.Common.Constants;
+using RPG.BuildingBlocks.Common.Providers.Identity;
+using RPG.BuildingBlocks.Common.SeedWork;
+using RPG.BuildingBlocks.Common.ServiceDiscovery;
+using RPG.BuildingBlocks.Common.StateManagement;
+using RPG.BuildingBlocks.Common.Utils;
+using RPG.BuildingBlocks.Utils;
+using RPG.RPG.BuildingBlocks.Common.AuthorizationAttributes;
+using Serilog;
 using System.Net.Http.Headers;
 using System.Reflection;
-using System.Threading.Tasks;
-using RPG.BuildingBlocks.Common.EventBus;
-using RPG.BuildingBlocks.Common.ServiceDiscovery;
-using RPG.BuildingBlocks.Common.Email;
-using RPG.BuildingBlocks.Common.SMS;
-using IdentityServer4.AccessTokenValidation;
-using Microsoft.IdentityModel.Logging;
-using Microsoft.AspNetCore.Hosting;
-using RPG.BuildingBlocks.Common.Constants;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using RPG.BuildingBlocks.Common.CommonLog;
-using RPG.BuildingBlocks.Common.Providers.Identity;
-using FluentValidation;
-using IdentityModel;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
-using Serilog;
-using RPG.BuildingBlocks.Common.StateManagement;
-using RPG.RPG.BuildingBlocks.Common.AuthorizationAttributes;
-using RPG.BuildingBlocks.Utils;
 
 namespace RPG.BuildingBlocks.Common.Extensions
 {
@@ -211,7 +203,7 @@ namespace RPG.BuildingBlocks.Common.Extensions
             services.AddScoped<CustomRequestInfo>();
             services.AddSingleton<IAuthorizationHandler, ValidApiTokenHandler>();
             services.AddHttpContextAccessor();
-            services.AddAutoMapper(typeof(TMediatrCommandHandler).Assembly);
+            //services.AddAutoMapper(typeof(TMediatrCommandHandler).Assembly);
 
             services.AddHttpClient<IIdentityProvider, IdentityProvider>((serv ,opt) =>
             {

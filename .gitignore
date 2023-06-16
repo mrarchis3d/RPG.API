@@ -21,3 +21,5 @@ obj/
 
 .logs/**
 .tye/**
+
+src/BuildOutput/**

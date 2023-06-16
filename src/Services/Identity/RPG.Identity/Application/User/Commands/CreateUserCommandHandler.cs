@@ -5,7 +5,6 @@ using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using RPG.BuildingBlocks.Common.Utils;
-using RPG.BuildingBlocks.Utils;
 using RPG.Identity.Domain.UserAggregate;
 using RPG.Identity.Dtos.Requests;
 using RPG.Identity.Dtos.Responses;

@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.Localization;
-using RPG.BuildingBlocks.Utils;
 
 namespace RPG.Identity.Utils
 {

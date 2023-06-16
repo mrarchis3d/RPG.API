@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace RPG.BuildingBlocks.Common.Utils
 {
@@ -40,13 +35,13 @@ namespace RPG.BuildingBlocks.Common.Utils
             return new PagedHelper<T>(items, count, pageNumber, pageSize);
         }
 
-        public static async Task<PagedHelper<T>> ToPageListAsync<TK>(IQueryable<TK> source, int pageNumber, int pageSize, IMapper mapper) where TK : class
-        {
-            var count = await source.CountAsync();
-            var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
-            var mapped = mapper.Map<List<T>>(items);
-            return new PagedHelper<T>(mapped, count, pageNumber, pageSize);
-        }
+        //public static async Task<PagedHelper<T>> ToPageListAsync<TK>(IQueryable<TK> source, int pageNumber, int pageSize, IMapper mapper) where TK : class
+        //{
+        //    var count = await source.CountAsync();
+        //    var items = await source.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToListAsync();
+        //    var mapped = mapper.Map<List<T>>(items);
+        //    return new PagedHelper<T>(mapped, count, pageNumber, pageSize);
+        //}
 
         public static PagedHelper<T> AsPagedList(IQueryable<T> items, int pageNumber, int pageSize, int count) 
             => new(items.ToList(), items.Count() > 0 ? items.Count() : 1, pageNumber, pageSize);

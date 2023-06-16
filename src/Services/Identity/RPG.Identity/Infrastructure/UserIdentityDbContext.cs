@@ -4,9 +4,9 @@ using RPG.Identity.Domain.UserAggregate;
 
 namespace RPG.Identity.Infrastructure
 {
-    public class ApplicationDbContext: IdentityDbContext<ApplicationUser>
+    public class UserIdentityDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options): base(options)
+        public UserIdentityDbContext(DbContextOptions<UserIdentityDbContext> options): base(options)
         {
                 
         }

@@ -1,4 +1,4 @@
-﻿using Duende.IdentityServer.Validation;
+﻿using IdentityServer4.Validation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using RPG.Identity.Infrastructure;
@@ -8,9 +8,9 @@ namespace RPG.Identity.Services
 {
     public class CustomSignInService : ICustomTokenRequestValidator
     {
-        private ApplicationDbContext _context;
+        private UserIdentityDbContext _context;
         private IStringLocalizer<ServiceResources> _serviceLocalizer;
-        public CustomSignInService(ApplicationDbContext context, IStringLocalizer<ServiceResources> serviceLocalizer)
+        public CustomSignInService(UserIdentityDbContext context, IStringLocalizer<ServiceResources> serviceLocalizer)
         {
             _context = context;
             _serviceLocalizer = serviceLocalizer;
