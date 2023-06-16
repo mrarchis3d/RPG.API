@@ -1,0 +1,59 @@
+# tye application configuration file
+# read all about it at https://github.com/dotnet/tye
+#
+# when you've given us a try, we'd love to know what you think:
+#    https://aka.ms/AA7q20u
+#
+name: rpg
+
+
+extensions:
+- name: dapr
+  components-path: "./infrastructure/dev/dapr"
+  config: appconfig
+- name: seq
+  logPath: ./.logs
+
+ingress:
+  - name: ingress-rpg
+    tags:
+      - ingress
+    bindings:
+      - port: 8080
+    rules:
+      - path: /identity
+        service: identity
+      - path: /character
+        service: character
+
+
+services:
+- name: identity
+  project: src/Services/Identity/RPG.Identity/RPG.Identity.csproj
+  tags:
+    - identity
+    - character
+  env_file:
+    - infrastructure/dev/env/global.env
+    - infrastructure/dev/env/identity.env
+  env:
+  - name: ASPNETCORE_ServiceId
+    value: identity
+  bindings:
+  - protocol: http
+    port: 7001
+
+
+- name: character
+  project: src/Services/Character/RPG.Character/RPG.Character.csproj
+  tags:
+    - character
+  env_file:
+    - infrastructure/dev/env/global.env
+  env:
+  - name: ASPNETCORE_ServiceId
+    value: character
+  bindings:
+  - protocol: http 
+    port: 7002
+
