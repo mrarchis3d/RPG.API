@@ -8,7 +8,7 @@ using System.Net;
 namespace RPG.Identity.Controllers
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v1/[controller]")]
     public class UserController: Controller
     {
         private readonly IMediator _mediator;

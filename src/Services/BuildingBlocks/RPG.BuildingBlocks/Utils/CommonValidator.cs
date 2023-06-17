@@ -5,9 +5,9 @@ using System.Net;
 
 namespace RPG.BuildingBlocks.Common.Utils
 {
-    public class CommonValidator
+    public static class CommonValidator
     {
-        public ValidationResult Validate<TCommand>(TCommand command, AbstractValidator<TCommand> validator)
+        public static ValidationResult Validate<TCommand>(TCommand command, AbstractValidator<TCommand> validator)
         {
             var results = validator.Validate(command);
             if (!results.IsValid)

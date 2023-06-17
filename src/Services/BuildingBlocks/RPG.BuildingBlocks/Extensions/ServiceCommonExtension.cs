@@ -199,7 +199,6 @@ namespace RPG.BuildingBlocks.Common.Extensions
 
             services.AddScoped<CentralizedLogger>();
 
-            services.AddScoped<CommonValidator>();
             services.AddScoped<CustomRequestInfo>();
             services.AddSingleton<IAuthorizationHandler, ValidApiTokenHandler>();
             services.AddHttpContextAccessor();

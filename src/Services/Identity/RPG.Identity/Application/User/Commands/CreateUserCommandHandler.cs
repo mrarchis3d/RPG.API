@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using RPG.BuildingBlocks.Common.Utils;
 using RPG.Identity.Domain.UserAggregate;
-using RPG.Identity.Dtos.Requests;
 using RPG.Identity.Dtos.Responses;
 using RPG.Identity.Utils;
 using System.Security.Claims;
@@ -15,15 +14,23 @@ namespace RPG.Identity.Application.User.Commands
 {
     public class CreateUserCommandHandler
     {
-        public class Command : CreateUserDto, IRequest<UserStandardResponse>
+        public class Command : IRequest<UserStandardResponse>
         {
+            public string UserName { get; set; }
+            public string FullName { get; set; }
+            public string Email { get; set; }
+            public string Password { get; set; }
+            public Command(string username, string fullName, string email, string password)
+            {
+                UserName = username; FullName = fullName; Email = email; Password = password;
+            }
 
         }
 
         public class CommandValidator : AbstractValidator<Command>
         {
             public CommandValidator(
-                IStringLocalizer<ServiceResources> commonLocalizer
+                IStringLocalizer commonLocalizer
             )
             {
                 //Required
@@ -44,20 +51,17 @@ namespace RPG.Identity.Application.User.Commands
             private readonly UserManager<ApplicationUser> _userManager;
             private readonly IMapper _mapper;
             private readonly ILogger<Handler> _logger;
-            private readonly CommonValidator _commonValidator;
-            private readonly IStringLocalizer<ServiceResources> _serviceLocalizer;
+            private readonly IStringLocalizer _serviceLocalizer;
 
             public Handler(
                 UserManager<ApplicationUser> userManager,
                 IMapper mapper,
-                CommonValidator commonValidator,
-                IStringLocalizer<ServiceResources> serviceResources,
+                IStringLocalizer serviceResources,
                 ILogger<Handler> logger
             )
             {
                 _userManager  = userManager;
                 _mapper = mapper;
-                _commonValidator = commonValidator;
                 _serviceLocalizer = serviceResources;
                 _logger = logger;
             }
@@ -67,8 +71,8 @@ namespace RPG.Identity.Application.User.Commands
                             CancellationToken cancellationToken
                         )
             {
-                _commonValidator.Validate<Command>(command, new CommandValidator(_serviceLocalizer));
-                _commonValidator.Validate<string>(command.Password, new PasswordValidator(_serviceLocalizer));
+                CommonValidator.Validate<Command>(command, new CommandValidator(_serviceLocalizer));
+                CommonValidator.Validate<string>(command.Password, new PasswordValidator(_serviceLocalizer));
 
                 var user = await _userManager.FindByEmailAsync(command.Email);
 
