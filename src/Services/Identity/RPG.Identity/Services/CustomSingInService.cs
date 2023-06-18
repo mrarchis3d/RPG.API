@@ -19,33 +19,28 @@ namespace RPG.Identity.Services
         {
             var validatedRequest = context.Result.ValidatedRequest;
 
-            if (validatedRequest.ClientId != BuildingBlocks.Common.Constants.Authorization.IDENTITY_CLIENT)
+            if (validatedRequest.ClientId != BuildingBlocks.Common.Constants.Authorization.CLIENT_UNREALDESKTOP)
             {
                 return;
             }
 
             var userId = validatedRequest.Subject.Claims.FirstOrDefault(x => x.Type == "sub")?.Value;
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
+            //logic about active or inactive users or confirmed mail phoneconfirmed etc
 
-            if ( !context.Result.IsError)
-            {
-                context.Result.IsError = true;
-                context.Result.Error = "not_active";
-                return;
-            }
-
-            if (!(user.EmailConfirmed || user.PhoneNumberConfirmed))
-            {
-                context.Result.IsError = true;
-                context.Result.Error = "not_confirmed";
-                context.Result.CustomResponse = new Dictionary<string, object>();
-                context.Result.CustomResponse.Add("error_description",
-                    _serviceLocalizer["ERROR_USER_NOT_CONFIRMED", user.UserName].Value);
-                context.Result.CustomResponse.Add("username", user.UserName);
-                context.Result.CustomResponse.Add("has_phone", !string.IsNullOrEmpty(user.PhoneNumber));
-                context.Result.CustomResponse.Add("has_email", !string.IsNullOrEmpty(user.Email));
-                return;
-            }
+            // if (!(user.EmailConfirmed || user.PhoneNumberConfirmed))
+            // {
+            //     context.Result.IsError = true;
+            //     context.Result.Error = "not_confirmed";
+            //     context.Result.CustomResponse = new Dictionary<string, object>();
+            //     context.Result.CustomResponse.Add("error_description",
+            //         _serviceLocalizer["ERROR_USER_NOT_CONFIRMED", user.UserName].Value);
+            //     context.Result.CustomResponse.Add("username", user.UserName);
+            //     context.Result.CustomResponse.Add("has_phone", !string.IsNullOrEmpty(user.PhoneNumber));
+            //     context.Result.CustomResponse.Add("has_email", !string.IsNullOrEmpty(user.Email));
+            //     return;
+            // }
+            return;
         }
     }
 }

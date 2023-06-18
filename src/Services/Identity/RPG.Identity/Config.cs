@@ -1,4 +1,5 @@
 ﻿using IdentityServer4.Models;
+using RPG.BuildingBlocks.Common.Constants;
 
 namespace RPG.Identity
 {
@@ -6,7 +7,12 @@ namespace RPG.Identity
     {
         public static IEnumerable<ApiResource> GetApiResources()=> new List<ApiResource>
         {
-            new ApiResource("character", "Character")
+            new ApiResource("character")
+            {
+                Scopes = new List<string> { "character.full", SharedScopes.SCOPE_SERVICE_DISCOVERY},
+                ApiSecrets = new List<Secret> {new Secret("c3e21893-0fe9-45ab-a885-27f9c158b2a1".Sha256())},
+                UserClaims = new List<string> {"role"}
+            }
         };
             
 
@@ -14,13 +20,18 @@ namespace RPG.Identity
         {
             new IdentityResources.OpenId(),
             new IdentityResources.Profile(),
+            new IdentityResource
+            {
+              Name = "role",
+              UserClaims = new List<string> {"role"}
+            }
         };
             
 
         public static IEnumerable<ApiScope> GetApiScopes() => new List<ApiScope>
         {
-            new ApiScope("character.read", "Read access to Character API"),
-            new ApiScope("character.write", "Write access to Character API"),
+            new ApiScope(SharedScopes.SCOPE_SERVICE_DISCOVERY),
+            new ApiScope("character.full", "full access to Character API")
         };
         
     }

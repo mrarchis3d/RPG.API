@@ -232,7 +232,7 @@ namespace RPG.BuildingBlocks.Common
                     {
                         c.SwaggerEndpoint($"v{version}/swagger.json", $"Service {version}.0");
                     }
-                    c.OAuthClientId(ClientIds.UnrealMobile);
+                    c.OAuthClientId(ClientIds.UnrealDesktop);
                     c.OAuthAppName("API - Swagger");
                     c.OAuthUsePkce();
                 });

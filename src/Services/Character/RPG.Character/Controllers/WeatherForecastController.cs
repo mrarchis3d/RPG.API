@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace RPG.Character.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     [Authorize]
     public class WeatherForecastController : ControllerBase

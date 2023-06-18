@@ -1,3 +1,6 @@
+using Dapr.Client;
+using Dapr.Extensions.Configuration;
+
 namespace RPG.Identity
 {
     public class Program

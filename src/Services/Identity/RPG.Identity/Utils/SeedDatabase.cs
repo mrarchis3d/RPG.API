@@ -10,17 +10,18 @@ namespace RPG.Identity.Utils
         public static void IdentityDatabase(this IApplicationBuilder app)
         {
             using (var serviceScope =
-                    app.ApplicationServices
-                        .GetService<IServiceScopeFactory>().CreateScope())
+                    app.ApplicationServices!
+                        .GetService<IServiceScopeFactory>()!.CreateScope())
             {
-                //serviceScope
-                //    .ServiceProvider
-                //        .GetRequiredService<PersistedGrantDbContext>()
-                //        .Database.Migrate();
+                var identity = serviceScope.ServiceProvider.GetRequiredService<UserIdentityDbContext>();
 
-                var context =
-                    serviceScope.ServiceProvider
-                        .GetRequiredService<ConfigurationDbContext>();
+                identity.Database.Migrate();
+
+                var persistence = serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>();
+                  
+                persistence.Database.Migrate();
+
+                var context =serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
 
                 EnsureSeedData(context);
 
@@ -90,25 +91,6 @@ namespace RPG.Identity.Utils
             }
         }
 
-        private static void ApplyPostMigrations(UserIdentityDbContext context)
-        {
-            var users = context.Users.Where(x => !x.Active);
-            if (users.Any())
-            {
-                foreach (var user in users)
-                {
-                    if (!user.UserName!.StartsWith(BuildingBlocks.Common.Constants.UserConstants.TEMPORAL_PREFIX))
-                    {
-                        user.Active = true;
-                        user.LockoutEnd = DateTime.UtcNow.AddMinutes(-1);
-                    }
-                }
-
-                context.Users.UpdateRange(users);
-
-                context.SaveChanges();
-            }
-        }
     }
     
 }

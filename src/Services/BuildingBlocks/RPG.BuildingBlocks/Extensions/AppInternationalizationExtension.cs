@@ -41,7 +41,7 @@ namespace RPG.BuildingBlocks.Common.Extensions
                     {
                         c.SwaggerEndpoint($"v{version}/swagger.json", $"Service {version}.0");
                     }
-                    c.OAuthClientId(ClientIds.Flutter);
+                    c.OAuthClientId(ClientIds.UnrealDesktop);
                     c.OAuthAppName("API - Swagger");
                     c.OAuthUsePkce();    
                 });
