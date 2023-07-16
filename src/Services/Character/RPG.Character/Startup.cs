@@ -1,13 +1,20 @@
+using FluentValidation;
+using IdentityModel;
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Localization;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using RPG.BuildingBlocks.Common.Constants;
+using RPG.BuildingBlocks.Common.Extensions;
 using RPG.BuildingBlocks.Common.Middlewares;
+using RPG.BuildingBlocks.Common.Providers.Identity;
 using RPG.BuildingBlocks.Middlewares;
+using RPG.BuildingBlocks.Utils;
 using RPG.Character.Infrastructure;
 using RPG.RPG.BuildingBlocks.Common.AuthorizationAttributes;
+using System.Net.Http.Headers;
 
 namespace RPG.Character
 {
@@ -36,6 +43,9 @@ namespace RPG.Character
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
             services.AddDbContext<ServiceDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
+            services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+            services.AddAutoMapper(typeof(Program).Assembly);
             services.AddEndpointsApiExplorer();
             services.AddSingleton<IAuthorizationHandler, ValidApiTokenHandler>();
             services.AddControllers().AddNewtonsoftJson(x =>
@@ -86,7 +96,24 @@ namespace RPG.Character
                     }
                 });
             });
+            services.AddHttpContextAccessor();
 
+            services.AddHttpClient<IIdentityProvider, IdentityProvider>((serv, opt) =>
+            {
+                var accessor = serv.GetRequiredService<IHttpContextAccessor>();
+
+                if (accessor.HttpContext is null)
+                    return;
+
+                if (accessor.HttpContext.User.Claims.Any(x => x.Type == JwtClaimTypes.ClientId && x.Value == ClientIds.Internal))
+                    opt.DefaultRequestHeaders.Add("X-USER-ID",
+                        accessor.HttpContext.GetHeaderUserId().Result);
+
+                opt.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", accessor.HttpContext.GetBearerToken().Result);
+            });
+            services.AddTransient<IStringLocalizerFactory, ResourceManagerStringLocalizerFactory>();
+            services.AddTransient(typeof(IStringLocalizer), typeof(StringLocalizer<CommonResources>));
             services.AddAuthorization();
 
         }

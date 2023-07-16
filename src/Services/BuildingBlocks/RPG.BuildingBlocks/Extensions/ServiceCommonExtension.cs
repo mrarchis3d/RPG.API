@@ -173,15 +173,15 @@ namespace RPG.BuildingBlocks.Common.Extensions
                    options.SubstituteApiVersionInUrl = true;
                });
 
-            services.AddMediatR(typeof(TMediatrCommandHandler).Assembly, typeof(CommonResources).Assembly);
+            //services.AddMediatR(typeof(TMediatrCommandHandler).Assembly, typeof(CommonResources).Assembly);
 
-            if (additionalAssemblies is not null)
-            {
-                foreach (var assembly in additionalAssemblies)
-                {
-                    services.AddMediatR(assembly);
-                }
-            }
+            //if (additionalAssemblies is not null)
+            //{
+            //    foreach (var assembly in additionalAssemblies)
+            //    {
+            //        services.AddMediatR(assembly);
+            //    }
+            //}
             
             services.AddValidatorsFromAssemblyContaining<TMediatrCommandHandler>();
             services.AddControllers().AddNewtonsoftJson(x =>
