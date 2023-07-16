@@ -1,10 +1,12 @@
 using IdentityServer4.AccessTokenValidation;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using RPG.BuildingBlocks.Common.Constants;
 using RPG.BuildingBlocks.Common.Middlewares;
 using RPG.BuildingBlocks.Middlewares;
+using RPG.Character.Infrastructure;
 using RPG.RPG.BuildingBlocks.Common.AuthorizationAttributes;
 
 namespace RPG.Character
@@ -23,24 +25,24 @@ namespace RPG.Character
         // This method gets called by the runtime. Use this method to add services to the container.
         public virtual void ConfigureServices(IServiceCollection services)
         {
+            string serviceId = Configuration["ServiceId"];
+            string connectionString = Configuration.GetConnectionString("DefaultConnection");
+            string authorityUrl = Configuration["AUTHORITY_URL"];
+            bool requireHttpsMetadata = bool.Parse(Configuration["AUTHORITY_REQUIRE_HTTPS_METADATA"]);
+            Console.WriteLine($"Service Id {serviceId}");
+            Console.WriteLine($"authority URL {authorityUrl}");
+            Console.WriteLine($"requireHttpsMetadata {requireHttpsMetadata}");
+
 
             services.AddLocalization(options => options.ResourcesPath = "Resources");
+            services.AddDbContext<ServiceDbContext>(options => options.UseSqlServer(connectionString));
             services.AddEndpointsApiExplorer();
             services.AddSingleton<IAuthorizationHandler, ValidApiTokenHandler>();
-
             services.AddControllers().AddNewtonsoftJson(x =>
             {
                 x.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
                 x.SerializerSettings.Formatting = Formatting.Indented;
             });//.AddDapr();
-
-            string serviceId = Configuration["ServiceId"];
-            string authorityUrl = Configuration["AUTHORITY_URL"];
-            bool requireHttpsMetadata = bool.Parse(Configuration["AUTHORITY_REQUIRE_HTTPS_METADATA"]);
-
-            Console.WriteLine($"Service Id {serviceId}");
-            Console.WriteLine($"authority URL {authorityUrl}");
-            Console.WriteLine($"requireHttpsMetadata {requireHttpsMetadata}");
 
             //http://docs.identityserver.io/en/release/topics/apis.html
             services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
@@ -55,7 +57,6 @@ namespace RPG.Character
                     ValidateAudience = false
                 };
             });
-
             services.AddSwaggerGen(c =>
             {
                 c.CustomSchemaIds(s => s.FullName.Replace("+", "."));

@@ -109,20 +109,6 @@ namespace RPG.Identity.Application.User.Commands
 
                 return _mapper.Map<UserStandardResponse>(user);
             }
-
-            private async Task<string> CreateTemporalUserName()
-            {
-                var newUserName = String.Empty;
-                var newUser = new ApplicationUser();
-                do
-                {
-                    newUserName = $"RPG_{Guid.NewGuid()}";
-                    newUser = await _userManager.FindByNameAsync(newUserName);
-                }
-                while (newUser != null);
-
-                return newUserName;
-            }
         }
 
     }
